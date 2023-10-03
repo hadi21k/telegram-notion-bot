@@ -13,7 +13,8 @@ const connect = async (msg) => {
           [
             {
               text: "Connect",
-              url: `https://api.notion.com/v1/oauth/authorize?client_id=04014f17-ddeb-4130-8d79-9648831d937b&response_type=code&owner=user&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fauth%2Fnotion%2Fcallback&state=telegram_${chatId}`,
+              url:
+                process.env.NOTION_AUTH_URL + "&state=" + `telegram_${chatId}`,
             },
           ],
         ],

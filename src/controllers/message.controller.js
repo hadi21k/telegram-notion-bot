@@ -1,7 +1,7 @@
-const start = require("../commands/start");
-const connect = require("../commands/connect");
-const createDatabase = require("../commands/create");
-const addToDatabase = require("../commands/add");
+const start = require("../commands/start.js");
+const connect = require("../commands/connect.js");
+const createDatabase = require("../commands/createDatabase.js");
+const addToDatabase = require("../commands/add.js");
 
 const newMessageController = (req, res) => {
   const { message } = req.body;

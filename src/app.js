@@ -7,7 +7,7 @@ const bot = require("./utils/bot");
 dotenv.config();
 
 const authRouter = require("./routes/auth.route.js");
-const newMessageController = require("./controllers/message.controller");
+const newMessageController = require("./controllers/message.controller.js");
 
 const app = express();
 

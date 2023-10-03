@@ -1,7 +1,7 @@
-import start from "../commands/start";
-import connect from "../commands/connect";
-import createDatabase from "../commands/create";
-import addToDatabase from "../commands/add";
+const start = require("../commands/start");
+const connect = require("../commands/connect");
+const createDatabase = require("../commands/create");
+const addToDatabase = require("../commands/add");
 
 const newMessageController = (req, res) => {
   const { message } = req.body;

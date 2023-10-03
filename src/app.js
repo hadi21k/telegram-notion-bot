@@ -7,20 +7,19 @@ const bot = require("./utils/bot");
 dotenv.config();
 
 const authRouter = require("./routes/auth.route.js");
-
-const start = require("./commands/start");
-const connect = require("./commands/connect");
-const createDatabase = require("./commands/createDatabase");
-const addToDatabase = require("./commands/addToDatabase");
+const newMessageController = require("./controllers/message.controller");
 
 const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 bot.setMyCommands([
   { command: "start", description: "Start the bot" },
   { command: "connect", description: "Connect your Notion account" },
   {
     command: "create",
-    description: "Send a Notion page URL to create a database"
+    description: "Send a Notion page URL to create a database",
   },
   {
     command: "add",
@@ -28,10 +27,13 @@ bot.setMyCommands([
   },
 ]);
 
-bot.onText(/\/start/, start);
-bot.onText(/\/connect/, connect);
-bot.onText(/\/create (.+)/, createDatabase);
-bot.onText(/\/add (\S+) (.+) (.+)/, addToDatabase);
+app.post("/new-message", newMessageController);
+
+// bot.onText(/\/start/, start);
+// bot.onText(/\/connect/, connect);
+// bot.onText(/\/create (.+)/, createDatabase);
+// bot.onText(/\/add (\S+) (.+) (.+)/, addToDatabase);
+
 app.use("/api/auth", authRouter);
 
 bot.on("polling_error", (error) => logger.error(error));

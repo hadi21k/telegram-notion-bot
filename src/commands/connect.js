@@ -1,4 +1,3 @@
-const User = require("../models/user.model");
 const bot = require("../utils/bot");
 
 const connect = async (msg) => {

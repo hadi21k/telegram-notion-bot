@@ -12,7 +12,7 @@ const newMessageController = (req, res) => {
 
   const { text } = message;
 
-  const regex = /\/start|\/connect|\/create|\/add/;
+  const regex = /\/start|\/connect|\/create (.+)|\/add (\S+) (.+) (.+)/;
   const match = text.match(regex);
 
   if (match) {
@@ -24,10 +24,10 @@ const newMessageController = (req, res) => {
         connect(message);
         break;
       case "/create":
-        createDatabase(message);
+        createDatabase(message, match[1]);
         break;
       case "/add":
-        addToDatabase(message);
+        addToDatabase(message, match[1], match[2], match[3]);
         break;
       default:
         res.end();

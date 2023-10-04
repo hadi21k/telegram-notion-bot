@@ -7,9 +7,9 @@ const Database = require("../models/database.model");
 const { linkDatabaseSchema } = require("../utils/notiondb");
 const extractPageIdFromUrl = require("../services/extractIdFromURL");
 
-const createDatabase = async (msg, match) => {
+const createDatabase = async (msg, url) => {
   const chatId = msg.chat.id;
-  const page_id = extractPageIdFromUrl(match[1]);
+  const page_id = extractPageIdFromUrl(url);
 
   try {
     const user = await findOneUserAndPopulate({ chatId }, "access_token");

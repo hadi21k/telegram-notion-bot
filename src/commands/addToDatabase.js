@@ -5,11 +5,8 @@ const bot = require("../utils/bot");
 const { decrypt } = require("../utils/security");
 const { linkPageSchema } = require("../utils/notiondb");
 
-const addToDatabase = async (msg, match) => {
+const addToDatabase = async (msg, url, title, category) => {
   const chatId = msg.chat.id;
-  const url = match[1];
-  const title = match[2];
-  const category = match[3];
 
   try {
     const user = await findOneUserAndPopulate(

@@ -9,7 +9,7 @@ const start = async (msg) => {
 
     if (!userExists) {
       await User.create({
-        username: msg.from.username,
+        username: msg.from.username ? msg.from.username : null,
         chatId,
       });
     }
